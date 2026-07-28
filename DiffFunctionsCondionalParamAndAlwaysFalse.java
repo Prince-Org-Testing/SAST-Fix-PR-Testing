@@ -45,14 +45,9 @@ public class DiffFunctionsCondionalParamAndAlwaysFalse extends HttpServlet {
 			return;
 		}
 		
-		try {
-
-			Connection conn = DriverManager.getConnection("jdbc:mysql://local/", "userName", "password");
-
-			Statement st = conn.createStatement();
-
-			ResultSet res = st.executeQuery("SELECT * FROM  User where userId='" + param + "'");
-			res.close();
+		try (Connection conn = DriverManager.getConnection("jdbc:mysql://local/", "userName", "password");
+				Statement st = conn.createStatement();
+				ResultSet res = st.executeQuery("SELECT * FROM  User where userId='" + param + "'")) {
 
 		} catch (Exception e) {
 			// TODO do nothing
