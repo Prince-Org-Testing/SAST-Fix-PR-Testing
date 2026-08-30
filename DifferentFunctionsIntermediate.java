@@ -58,15 +58,10 @@ private void intermediate2(String param) {
 
 	private void goToSQL(String param) {
 
-		try {
+		try (Connection conn = DriverManager.getConnection("jdbc:mysql://local/", "userName", "password");
+				Statement st = conn.createStatement();
+				ResultSet res = st.executeQuery("SELECT * FROM  User where userId='" + param + "'")) {
 
-			Connection conn = DriverManager.getConnection("jdbc:mysql://local/", "userName", "password");
-
-			Statement st = conn.createStatement();
-
-			ResultSet res = st.executeQuery("SELECT * FROM  User where userId='" + param + "'");
-
-			res.close();
 			
 		} catch (Exception e) {
 			// TODO do nothing
