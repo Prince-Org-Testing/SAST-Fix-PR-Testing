@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Testing;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
